@@ -1,0 +1,10 @@
+from django.shortcuts import render, get_object_or_404
+from .models import MenuItem
+
+def home(request):
+    items = MenuItem.objects.all()
+    return render(request, 'menu/home.html', {'items': items})
+
+def item_detail(request, pk):
+    item = get_object_or_404(MenuItem, pk=pk)
+    return render(request, 'menu/item_detail.html', {'item': item})
